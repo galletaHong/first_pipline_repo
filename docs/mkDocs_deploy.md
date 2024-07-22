@@ -11,7 +11,7 @@ cd my-project
 ```
 ## Deploy on Github pages
 1. Add `.github/workflows/docs.yml` with below code in your repository :
-```yml
+```yaml
 name: docs 
 on:
   push:
@@ -45,13 +45,13 @@ jobs:
 
 2. Push all your documentation on Github
 3. Create the `site\` foldfer
-```
+```=
 $ mkdocs build
 ```
 
 4. Site files get [deployed](https://www.mkdocs.org/user-guide/deploying-your-docs/) to a branch
 Use the following command :
-```
+```=
 $ mkdocs gh-deploy
 ```
 
