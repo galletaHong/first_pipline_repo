@@ -403,8 +403,8 @@ jobs:
       - run: mkdocs --version
 </code></pre>
 <ol>
-<li>Push all your documentation on Github
-Create the <code>site\</code> foldfer</li>
+<li>Push all your documentation on Github</li>
+<li>Create the <code>site\</code> foldfer</li>
 </ol>
 <pre><code>$ mkdocs build
 </code></pre>
@@ -415,11 +415,13 @@ Use the following command :</li>
 <pre><code>$ mkdocs gh-deploy
 </code></pre>
 <p>MkDocs will build your docs and use the <strong>ghp-import</strong> tool to commit them to the <code>gh-pages</code> branch and push the <code>gh-pages</code> branch to GitHub.
-4. Enable Github Pages 
+5. Enable Github Pages 
 Go your repository Github website, and enable Repo by <code>Settings &gt; Pages</code>.
 In the section <code>Build and deployment</code>, set <strong>Source</strong> to <code>Deploy from the brance</code>.
-In the next section <code>Branch</code>, set <code>gh-pages</code> <code>/root</code> and click <code>save</code>.
-5. </p>
+In the next section <code>Branch</code>, set <code>gh-pages</code> <code>/root</code> and click <code>save</code>.</p>
+<blockquote>
+<p>If you want to modify your file, only use the <strong>step 2</strong>, <strong>3</strong> and <strong>4</strong>.</p>
+</blockquote>
 <h2 id="put-readmemd">Put <code>README.md</code></h2>
 <p>Try to put the repository <code>README.md</code> file in below.
 * First, install the usefull <strong>mkdocs material</strong></p>
