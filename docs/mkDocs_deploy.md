@@ -10,8 +10,8 @@ mkdocs new my-project
 cd my-project
 ```
 ## Deploy on Github pages
-1. Add `.github/workflows/docs/yml` with below code in your repository :
-```
+1. Add `.github/workflows/docs.yml` with below code in your repository :
+```yml
 name: docs 
 on:
   push:
@@ -42,16 +42,21 @@ jobs:
       - run: mkdocs gh-deploy --force
       - run: mkdocs --version
 ```
-2. Site files get [deployed](https://www.mkdocs.org/user-guide/deploying-your-docs/) to a branch
+2. Push all your documentation on Github
+3. Site files get [deployed](https://www.mkdocs.org/user-guide/deploying-your-docs/) to a branch
 Use the following command :
 ```
 $ mkdocs gh-deploy
 ```
 MkDocs will build your docs and use the **ghp-import** tool to commit them to the `gh-pages` branch and push the `gh-pages` branch to GitHub.
-3. Enable Github Pages 
+4. Enable Github Pages 
 Go your repository Github website, and enable Repo by `Settings > Pages`.
 In the section `Build and deployment`, set **Source** to `Deploy from the brance`.
 In the next section `Branch`, set `gh-pages` `/root` and click `save`.
+5. Create the `site\` foldfer
+```
+$ mkdocs build
+```
 
 
 ## Put `README.md`
