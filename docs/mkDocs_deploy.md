@@ -42,16 +42,19 @@ jobs:
       - run: mkdocs gh-deploy --force
       - run: mkdocs --version
 ```
+
 2. Push all your documentation on Github
 3. Create the `site\` foldfer
 ```
 $ mkdocs build
 ```
+
 4. Site files get [deployed](https://www.mkdocs.org/user-guide/deploying-your-docs/) to a branch
 Use the following command :
 ```
 $ mkdocs gh-deploy
 ```
+
 MkDocs will build your docs and use the **ghp-import** tool to commit them to the `gh-pages` branch and push the `gh-pages` branch to GitHub.
 5. Enable Github Pages 
 Go your repository Github website, and enable Repo by `Settings > Pages`.
