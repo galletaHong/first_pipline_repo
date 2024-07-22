@@ -18,7 +18,7 @@
     
     
       
-        <title>skywalkerUse - First mkDocs</title>
+        <title>mkDocs - First mkDocs</title>
       
     
     
@@ -59,6 +59,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#mkdocs" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -91,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              skywalkerUse
+              mkDocs
             
           </span>
         </div>
@@ -210,16 +215,75 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    mkDocs
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    skywalkerUse
+    mkDocs
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-on-github-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy on Github pages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put-readmemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Put README.md
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -242,6 +306,43 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-on-github-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy on Github pages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put-readmemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Put README.md
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -256,31 +357,89 @@
                   
 
 
-  <h1>skywalkerUse</h1>
-
-<p>StatusCode        : 200
-StatusDescription : OK
-Content           : # Iovis iacentem Latinas ulterius tinguit illo</p>
-<pre><code>                ## Et iam et erat veteremque gaudenti
-
-                Lorem markdownum sed quoque quod sub diurnis herbis! Iusserat summa arbor, huc
-                specie nefas, huic, aut deterritus...
+<h1 id="mkdocs">mkDocs</h1>
+<h2 id="install">Install</h2>
+<ol>
+<li>The <a href="https://www.mkdocs.org/getting-started/">Installation of mkDocs</a></li>
+</ol>
+<pre><code>$ pip install mkdocs
 </code></pre>
-<p>RawContent        : HTTP/1.1 200 OK
-                    Transfer-Encoding: chunked
-                    Connection: keep-alive
-                    access-control-allow-origin: *
-                    Content-Type: text/plain; charset=utf-8
-                    Date: Mon, 22 Jul 2024 05:27:36 GMT
-                    Server: nginx/1.14.2...
-Forms             : {}
-Headers           : {[Transfer-Encoding, chunked], [Connection, keep-alive], [access-control-allow-origin, *], [
-                    Content-Type, text/plain; charset=utf-8]...}
-Images            : {}
-InputFields       : {}
-Links             : {}
-ParsedHtml        : mshtml.HTMLDocumentClass
-RawContentLength  : 1838</p>
+<p>After installation, you can <a href="https://www.mkdocs.org/getting-started/">getting Started with MkDocs</a> :</p>
+<pre><code>mkdocs new my-project
+cd my-project
+</code></pre>
+<h2 id="deploy-on-github-pages">Deploy on Github pages</h2>
+<ol>
+<li>Add <code>.github/workflows/docs/yml</code> with below code in your repository :</li>
+</ol>
+<pre><code>name: docs 
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+      # # https://github.com/marketplace/actions/deploy-mkdocs
+      # - uses: actions/checkout@v1
+      # - uses: mhausenblas/mkdocs-deploy-gh-pages@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # https://squidfunk.github.io/mkdocs-material/publishing-your-site/?h=github#with-github-actions
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - run: pip install -U git+https://github.com/mkdocs/mkdocs.git#egg=mkdocs
+      - run: pip install mkdocs-material
+      - run: mkdocs gh-deploy --force
+      - run: mkdocs --version
+</code></pre>
+<ol>
+<li>Site files get <a href="https://www.mkdocs.org/user-guide/deploying-your-docs/">deployed</a> to a branch
+Use the following command :</li>
+</ol>
+<pre><code>$ mkdocs gh-deploy
+</code></pre>
+<p>MkDocs will build your docs and use the <strong>ghp-import</strong> tool to commit them to the <code>gh-pages</code> branch and push the <code>gh-pages</code> branch to GitHub.
+3. Enable Github Pages 
+Go your repository Github website, and enable Repo by <code>Settings &gt; Pages</code>.
+In the section <code>Build and deployment</code>, set <strong>Source</strong> to <code>Deploy from the brance</code>.
+In the next section <code>Branch</code>, set <code>gh-pages</code> <code>/root</code> and click <code>save</code>.</p>
+<h2 id="put-readmemd">Put <code>README.md</code></h2>
+<p>Try to put the repository <code>README.md</code> file in below.
+* First, install the usefull <strong>mkdocs material</strong></p>
+<pre><code># use pip
+$　pip install mkdocs-material
+</code></pre>
+<ul>
+<li>Set <strong>material theme</strong> in your <code>mkdocs.yml</code> </li>
+</ul>
+<pre><code>theme:
+  name: material
+</code></pre>
+<ul>
+<li>Enable the <strong><a href="https://facelessuser.github.io/pymdown-extensions/extensions/snippets/">Snippets</a> extension</strong> in your <code>mkdocs.yml</code> </li>
+</ul>
+<pre><code>markdown_extensions:
+  - pymdownx.snippets
+</code></pre>
+<ul>
+<li>Use the instruction in the <code>your_file.md</code> :<blockquote>
+<p>--8&lt;--<br />
+./README.md<br />
+--8&lt;--</p>
+</blockquote>
+</li>
+</ul>
+<p>It will shown as :</p>
 
 
 
