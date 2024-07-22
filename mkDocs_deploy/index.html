@@ -272,6 +272,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#put-readmemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Put README.md
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -319,6 +328,15 @@
   <a href="#deploy-on-github-pages" class="md-nav__link">
     <span class="md-ellipsis">
       Deploy on Github pages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put-readmemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Put README.md
     </span>
   </a>
   
@@ -392,41 +410,44 @@ jobs:
 </code></pre>
 <ol>
 <li>Site files get <a href="https://www.mkdocs.org/user-guide/deploying-your-docs/">deployed</a> to a branch
-Use the following command :
-```=
-$ mkdocs gh-deploy</li>
+Use the following command :</li>
 </ol>
-<pre><code>
-MkDocs will build your docs and use the **ghp-import** tool to commit them to the `gh-pages` branch and push the `gh-pages` branch to GitHub.
+<pre><code>$ mkdocs gh-deploy
+</code></pre>
+<p>MkDocs will build your docs and use the <strong>ghp-import</strong> tool to commit them to the <code>gh-pages</code> branch and push the <code>gh-pages</code> branch to GitHub.
 5. Enable Github Pages 
-Go your repository Github website, and enable Repo by `Settings &gt; Pages`.
-In the section `Build and deployment`, set **Source** to `Deploy from the brance`.
-In the next section `Branch`, set `gh-pages` `/root` and click `save`.
-
-&gt; If you want to modify your file, only use the **step 2**, **3** and **4**.
-
-
-## Put `README.md`
-Try to put the repository `README.md` file in below.
-* First, install the usefull **mkdocs material**
-</code></pre>
-<h1 id="use-pip">use pip</h1>
-<p>$　pip install mkdocs-material</p>
-<pre><code>* Set **material theme** in your `mkdocs.yml` 
-</code></pre>
-<p>theme:
-  name: material</p>
-<pre><code>* Enable the **[Snippets](https://facelessuser.github.io/pymdown-extensions/extensions/snippets/) extension** in your `mkdocs.yml` 
-</code></pre>
-<p>markdown_extensions:
-  - pymdownx.snippets
-<code>``
-* Use the instruction in the</code>your_file.md` :</p>
+Go your repository Github website, and enable Repo by <code>Settings &gt; Pages</code>.
+In the section <code>Build and deployment</code>, set <strong>Source</strong> to <code>Deploy from the brance</code>.
+In the next section <code>Branch</code>, set <code>gh-pages</code> <code>/root</code> and click <code>save</code>.</p>
 <blockquote>
+<p>If you want to modify your file, only use the <strong>step 2</strong>, <strong>3</strong> and <strong>4</strong>.</p>
+</blockquote>
+<h2 id="put-readmemd">Put <code>README.md</code></h2>
+<p>Try to put the repository <code>README.md</code> file in below.
+* First, install the usefull <strong>mkdocs material</strong></p>
+<pre><code># use pip
+$　pip install mkdocs-material
+</code></pre>
+<ul>
+<li>Set <strong>material theme</strong> in your <code>mkdocs.yml</code> </li>
+</ul>
+<pre><code>theme:
+  name: material
+</code></pre>
+<ul>
+<li>Enable the <strong><a href="https://facelessuser.github.io/pymdown-extensions/extensions/snippets/">Snippets</a> extension</strong> in your <code>mkdocs.yml</code> </li>
+</ul>
+<pre><code>markdown_extensions:
+  - pymdownx.snippets
+</code></pre>
+<ul>
+<li>Use the instruction in the <code>your_file.md</code> :<blockquote>
 <p>--8&lt;--<br />
 ./README.md<br />
 --8&lt;--</p>
 </blockquote>
+</li>
+</ul>
 <p>It will shown as :</p>
 
 
