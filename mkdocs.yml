@@ -1,7 +1,7 @@
 site_name: First mkDocs
 nav:
   - Home: index.md
-  - skywalkerUse: skywalkerUse.md
+  - mkDocs: mkDocs_deploy.md
 theme:
   name: material
 markdown_extensions:
