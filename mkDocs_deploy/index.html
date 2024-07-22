@@ -403,7 +403,12 @@ jobs:
       - run: mkdocs --version
 </code></pre>
 <ol>
-<li>Push all your documentation on Github</li>
+<li>Push all your documentation on Github
+Create the <code>site\</code> foldfer</li>
+</ol>
+<pre><code>$ mkdocs build
+</code></pre>
+<ol>
 <li>Site files get <a href="https://www.mkdocs.org/user-guide/deploying-your-docs/">deployed</a> to a branch
 Use the following command :</li>
 </ol>
@@ -414,9 +419,7 @@ Use the following command :</li>
 Go your repository Github website, and enable Repo by <code>Settings &gt; Pages</code>.
 In the section <code>Build and deployment</code>, set <strong>Source</strong> to <code>Deploy from the brance</code>.
 In the next section <code>Branch</code>, set <code>gh-pages</code> <code>/root</code> and click <code>save</code>.
-5. Create the <code>site\</code> foldfer</p>
-<pre><code>$ mkdocs build
-</code></pre>
+5. </p>
 <h2 id="put-readmemd">Put <code>README.md</code></h2>
 <p>Try to put the repository <code>README.md</code> file in below.
 * First, install the usefull <strong>mkdocs material</strong></p>
