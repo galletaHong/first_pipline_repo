@@ -1,0 +1,8 @@
+site_name: First mkDocs
+nav:
+  - Home: index.md
+  - skywalkerUse: skywalkerUse.md
+theme:
+  name: material
+markdown_extensions:
+  - pymdownx.snippets
