@@ -12,7 +12,7 @@ cd my-project
 ## Deploy on Github pages
 1. Add `.github/workflows/docs.yml` with below code in your repository :
 
-```yaml
+```yaml title="docs.yml"
 name: docs 
 on:
   push:
@@ -66,21 +66,23 @@ In the next section `Branch`, set `gh-pages` `/root` and click `save`.
 
 > If you want to modify your file, only use the **step 2**, **3** and **4**.
 
-
-## Put `README.md`
-Try to put the repository `README.md` file in below.
-* First, install the usefull **mkdocs material**
+# [mkdocs material](https://squidfunk.github.io/mkdocs-material/)
+## [Installation](https://squidfunk.github.io/mkdocs-material/getting-started/)
+* Use pip
 ```
-# use pip
 $　pip install mkdocs-material
 ```
 * Set **material theme** in your `mkdocs.yml` 
-```
+```yaml title="mkdocs.yml"
 theme:
   name: material
 ```
+
+## Put `README.md` in page directly
+Try to put the repository `README.md` file in below.
+
 * Enable the **[Snippets](https://facelessuser.github.io/pymdown-extensions/extensions/snippets/) extension** in your `mkdocs.yml` 
-```
+```yaml title="mkdocs.yml"
 markdown_extensions:
   - pymdownx.snippets
 ```
@@ -89,4 +91,26 @@ markdown_extensions:
 > ./README.md  
 > --8<--
 
-It will shown as :
+## [Codeblock](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/) 
+### Configuration
+Add the following lines to `mkdocs.yml`: <br>
+
+```yaml title="mkdocs.yml"
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+```
+### Code copy button
+* Add the following to `mkdocs.yml` to enable them globally :
+
+```yaml title="mkdocs.yml"
+theme:
+  features:
+    - content.code.copy
+    - content.code.annotate 
+```
