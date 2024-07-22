@@ -43,6 +43,10 @@ jobs:
       - run: mkdocs --version
 ```
 2. Push all your documentation on Github
+Create the `site\` foldfer
+```
+$ mkdocs build
+```
 3. Site files get [deployed](https://www.mkdocs.org/user-guide/deploying-your-docs/) to a branch
 Use the following command :
 ```
@@ -53,10 +57,7 @@ MkDocs will build your docs and use the **ghp-import** tool to commit them to th
 Go your repository Github website, and enable Repo by `Settings > Pages`.
 In the section `Build and deployment`, set **Source** to `Deploy from the brance`.
 In the next section `Branch`, set `gh-pages` `/root` and click `save`.
-5. Create the `site\` foldfer
-```
-$ mkdocs build
-```
+5. 
 
 
 ## Put `README.md`
