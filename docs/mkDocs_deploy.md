@@ -1,4 +1,4 @@
-# mkDocs
+# [mkDocs](https://www.mkdocs.org/)
 ## Install
 1. The [Installation of mkDocs](https://www.mkdocs.org/getting-started/)
 ```
@@ -6,65 +6,49 @@ $ pip install mkdocs
 ```
 After installation, you can [getting Started with MkDocs](https://www.mkdocs.org/getting-started/) :
 ```
-mkdocs new my-project
-cd my-project
+$ mkdocs new my-project
+$ cd my-project
 ```
+Following command can be used to preview documentation on localhost.
+```
+$ mkdocs serve
+```
+Open up [***http://127.0.0.1:8000/***](http://127.0.0.1:8000/) in your browser.
+After this, while you save your changes.
+The browser will auto-reload and updated documentation immediately.
+
 ## Deploy on Github pages
-1. Add `.github/workflows/docs.yml` with below code in your repository :
+1. Push all your documentation on Github
+2. Create the `site\` foldfer
+    ```
+    $ mkdocs build
+    ```
 
-```yaml title="docs.yml"
-name: docs 
-on:
-  push:
-    branches:
-    - main
-  pull_request:
-    branches:
-    - main
+     > If you're using source code control such as `git`, you can add `"site/"` into the `.gitignore`, it will let the `site\` folder be ignored from repository.
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
+     > ```yaml title=".gitignore"
+     > "site/"
+     > ```
 
-      # # https://github.com/marketplace/actions/deploy-mkdocs
-      # - uses: actions/checkout@v1
-      # - uses: mhausenblas/mkdocs-deploy-gh-pages@master
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     > Or use the following instruction 
+     > ```
+     > $ echo "site/" >> .gitignore
+     > ```
 
-      # https://squidfunk.github.io/mkdocs-material/publishing-your-site/?h=github#with-github-actions
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
-      - run: pip install -U git+https://github.com/mkdocs/mkdocs.git#egg=mkdocs
-      - run: pip install mkdocs-material
-      - run: mkdocs gh-deploy --force
-      - run: mkdocs --version
-```
-
-2. Push all your documentation on Github
-3. Create the `site\` foldfer
-
-```
-$ mkdocs build
-```
-
-4. Site files get [deployed](https://www.mkdocs.org/user-guide/deploying-your-docs/) to a branch
+3. Site files get [deployed](https://www.mkdocs.org/user-guide/deploying-your-docs/) to a branch
 Use the following command :
+    ```
+    $ mkdocs gh-deploy
+    ```
+    MkDocs will build your docs and use the **ghp-import** tool to commit them to the `gh-pages` branch and push the `gh-pages` branch to GitHub.
 
-```
-$ mkdocs gh-deploy
-```
+4. Enable Github Pages 
+    1. Go your repository Github website.
+    2. Enable Repo by `Settings > Pages`.
+    3. In the section `Build and deployment`, set **Source** to `Deploy from the brance`.
+    4. In the next section `Branch`, set `gh-pages` `/root` and click `save`.
 
-MkDocs will build your docs and use the **ghp-import** tool to commit them to the `gh-pages` branch and push the `gh-pages` branch to GitHub.
-5. Enable Github Pages 
-Go your repository Github website, and enable Repo by `Settings > Pages`.
-In the section `Build and deployment`, set **Source** to `Deploy from the brance`.
-In the next section `Branch`, set `gh-pages` `/root` and click `save`.
-
-> If you want to modify your file, only use the **step 2**, **3** and **4**.
+> After the first deploy, if you just want to modify your file, only use the **step 1**, **2** and **3**.
 
 # [mkdocs material](https://squidfunk.github.io/mkdocs-material/)
 ## [Installation](https://squidfunk.github.io/mkdocs-material/getting-started/)
