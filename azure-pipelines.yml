@@ -4,16 +4,28 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
+- main # every commit will trigger this yml
 
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+- stage: DeployMkDocs
+  jobs:
+  - job: deploy_gh_pages
+    displayName: Deploy MkDocs gh_pages
+    steps:
+    - script: echo Deploy MkDocs gh_pages.
+    - pwsh: |
+        mkdocs build
+        mkdocs gh-deploy
+    
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+# steps:
+# - script: echo Hello, world!
+#   displayName: 'Run a one-line script'
+
+# - script: |
+#     echo Add other tasks to build, test, and deploy your project.
+#     echo See https://aka.ms/yaml
+#   displayName: 'Run a multi-line script'
