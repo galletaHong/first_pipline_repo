@@ -18,6 +18,7 @@ stages:
     - script: echo Deploy MkDocs gh_pages.
     - pwsh: |
         pip install mkdocs
+        pip install mkdocs-material
         mkdocs build
         mkdocs gh-deploy
     
