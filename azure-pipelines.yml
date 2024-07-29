@@ -23,5 +23,3 @@ stages:
         pip install mkdocs-material
         mkdocs build
         mkdocs gh-deploy --force
-      env:
-        branch: main
