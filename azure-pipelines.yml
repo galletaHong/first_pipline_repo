@@ -7,18 +7,28 @@ trigger:
 - main # every commit will trigger this yml
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
 
 stages:
 - stage: DeployMkDocs
   jobs:
   - job: deploy_gh_pages
     displayName: Deploy MkDocs gh_pages
+
+    variables:
+      - group: galletaHong_creds
+
     steps:
     - script: echo Deploy MkDocs gh_pages.
+    
+    - pwsh: |
+      
     # force mkdocs version 1.1.2
     # reference: https://github.com/mkdocs/mkdocs/issues/2447
     - pwsh: |
+        git config --global user.name "$(galletaHong_userName)"
+        git config --global user.email "$(galletaHong_email)"
+
         pip install -U mkdocs
         pip install mkdocs-material
         mkdocs build
