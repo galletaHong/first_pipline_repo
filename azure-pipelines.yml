@@ -19,6 +19,7 @@ stages:
       - group: galletaHong_creds
 
     steps:
+    - checkout: self
     - script: echo Deploy MkDocs gh_pages.
       
     # force mkdocs version 1.1.2
@@ -26,8 +27,18 @@ stages:
     - script: |
         git config --global user.name "galletaHong"
         git config --global user.email "galleta.hong@hp.com"
-      displayName: "Update git config user"
-
+      displayName: "Configure Git user"
+    
+    - script: |
+        git config --global url."https://github.com/".insteadOf "git@github.com:"
+        git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+        echo "https://$GHE_USER:$GHE_TOKEN@github.com" >> $HOME/.git-credentials
+        git config --global url."https://".insteadOf git://
+        git config --global credential.helper store
+      displayName: "Update git config settings"
+      env:
+        GHE_HOSTNAME: "github.com"
+        GHE_USER: "galletaHong"
 
     - script: |
         pip install -U mkdocs
