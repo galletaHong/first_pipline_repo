@@ -35,6 +35,7 @@ stages:
         echo $(galletaHong_userName)
         git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
         echo $(galletaHong_email)
+        echo $(Agent.TempDirectory)
         echo "https://$gltHng_USER:$gltHng_TOKEN@github.com" >> $HOME/.git-credentials
         git config --global url."https://".insteadOf git://
         git config --global credential.helper store
