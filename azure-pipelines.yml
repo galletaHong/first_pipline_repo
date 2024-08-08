@@ -20,6 +20,7 @@ stages:
 
     steps:
     - checkout: self
+      lfs: true
     - script: echo Deploy MkDocs gh_pages.
       
     # force mkdocs version 1.1.2
@@ -39,6 +40,7 @@ stages:
       env:
         gltHng_USER: $(galletaHong_userName)
         gltHng_TOKEN: $(repoToken)
+        HOME: $(Agent.TempDirectory)
 
     - pwsh: |
         pip install -U mkdocs
