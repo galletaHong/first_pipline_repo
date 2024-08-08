@@ -32,13 +32,13 @@ stages:
     - script: |
         git config --global url."https://github.com/".insteadOf "git@github.com:"
         git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
-        echo "https://$GHE_USER:$GHE_TOKEN@github.com" >> $HOME/.git-credentials
+        echo "https://$gltHng_USER:$gltHng_TOKEN@github.com" >> $HOME/.git-credentials
         git config --global url."https://".insteadOf git://
         git config --global credential.helper store
       displayName: "Update git config settings"
       env:
-        GHE_USER: $(galletaHong_userName)
-        GHE_TOKEN: $(repoToken)
+        gltHng_USER: $(galletaHong_userName)
+        gltHng_TOKEN: $(repoToken)
 
     - script: |
         pip install -U mkdocs
