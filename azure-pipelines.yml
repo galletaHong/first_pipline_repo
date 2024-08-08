@@ -25,8 +25,8 @@ stages:
     # force mkdocs version 1.1.2
     # reference: https://github.com/mkdocs/mkdocs/issues/2447
     - script: |
-        git config --global user.name "galletaHong"
-        git config --global user.email "galleta.hong@hp.com"
+        git config --global user.name "$(galletaHong_userName)"
+        git config --global user.email "$(galletaHong_email)"
       displayName: "Configure Git user"
     
     - script: |
@@ -37,8 +37,8 @@ stages:
         git config --global credential.helper store
       displayName: "Update git config settings"
       env:
-        GHE_HOSTNAME: "github.com"
-        GHE_USER: "galletaHong"
+        GHE_USER: $(galletaHong_userName)
+        GHE_TOKEN: $(repoToken)
 
     - script: |
         pip install -U mkdocs
