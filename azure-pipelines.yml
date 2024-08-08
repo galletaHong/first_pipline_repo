@@ -40,7 +40,7 @@ stages:
         gltHng_USER: $(galletaHong_userName)
         gltHng_TOKEN: $(repoToken)
 
-    - script: |
+    - pwsh: |
         pip install -U mkdocs
         pip install mkdocs-material
         mkdocs build
