@@ -30,7 +30,8 @@ stages:
         git config --global user.email "$(galletaHong_email)"
       displayName: "Configure Git user"
     
-    - script: |
+    - bash: |
+        echo $(galletaHong_userName)
         git config --global url."https://github.com/".insteadOf "git@github.com:"
         git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
         echo "https://$gltHng_USER:$gltHng_TOKEN@github.com" >> $HOME/.git-credentials
