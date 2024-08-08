@@ -26,10 +26,42 @@ stages:
     # force mkdocs version 1.1.2
     # reference: https://github.com/mkdocs/mkdocs/issues/2447
     - pwsh: |
-        git config --global user.name "$(galletaHong_userName)"
-        git config --global user.email "$(galletaHong_email)"
+        git config --global user.name "galletaHong"
+        git config --global user.email "galleta.hong@hp.com"
 
         pip install -U mkdocs
         pip install mkdocs-material
         mkdocs build
         mkdocs gh-deploy --force
+
+###########################################
+# file: /steps/git/git-config-user-v0.yaml
+###########################################
+# parameters:
+#  username: codeway
+#  email: codeway@external.groups.hp.com
+# 
+# steps:
+# - script: |
+#     git config --global user.name "${{ parameters.username }}"
+#     git config --global user.email "${{ parameters.email }}"
+#   displayName: "Update git config user"
+#   env:
+#     HOME: $(Agent.TempDirectory)
+
+#####################################
+# file: /steps/git/git-config-v0.yaml
+#####################################
+# steps:
+# - bash: |
+#     git config --global url."https://$GHE_HOSTNAME/".insteadOf "git@$GHE_HOSTNAME:"
+#     git config --global url."https://$GHE_HOSTNAME/".insteadOf "ssh://git@$GHE_HOSTNAME/"
+#     echo "https://$GHE_USER:$GHE_TOKEN@$GHE_HOSTNAME" >> $HOME/.git-credentials
+#     git config --global url."https://".insteadOf git://
+#     git config --global credential.helper store
+#   displayName: "Update git config settings"
+#   env:
+#     GHE_USER: ${{ parameters.gheUser }}
+#     GHE_TOKEN: ${{ parameters.gheToken }}
+#     GHE_HOSTNAME: ${{ parameters.gheHostName }}
+#     HOME: $(Agent.TempDirectory)
