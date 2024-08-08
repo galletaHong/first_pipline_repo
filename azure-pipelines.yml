@@ -43,9 +43,18 @@ stages:
     - pwsh: |
         pip install -U mkdocs
         pip install mkdocs-material
+      displayName: "Install mkDocs"
+      
+    - pwsh: |
         mkdocs build
+      displayName: "Build MkDocs"
+
+    - pwsh: |
         mkdocs gh-deploy --force
-      displayName: "Build mkDocs"
+      displayName: "Deploy mkDocs"
+
+        
+        
 
 
 ###########################################
