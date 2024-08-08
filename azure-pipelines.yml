@@ -46,12 +46,25 @@ stages:
       displayName: "Install mkDocs"
       
     - pwsh: |
-        mkdocs build
-      displayName: "Build MkDocs"
+        pip install mike
+      displayName: "Install mike"
+      
 
     - pwsh: |
-        mkdocs gh-deploy --force
-      displayName: "Deploy mkDocs"
+        git fetch origin gh-pages --depth=1
+      displayName: "fetch origin gh-pages"
+    
+    - pwsh: |
+        mike deploy --push main
+      displayName: "Deploy via mike"
+      
+    #- pwsh: |
+    #    mkdocs build
+    #  displayName: "Build MkDocs"
+
+    #- pwsh: |
+    #    mkdocs gh-deploy --force
+    #  displayName: "Deploy mkDocs"
 
         
         
