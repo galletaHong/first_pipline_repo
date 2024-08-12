@@ -29,7 +29,7 @@ stages:
         git config --global user.email "$(galletaHong_email)"
       displayName: "Configure Git user"
     
-    - bash: |
+    - pwsh: |
         git config --global --add url."https://github.com/".insteadOf "git@github.com:"
         echo $(galletaHong_userName)
         git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
