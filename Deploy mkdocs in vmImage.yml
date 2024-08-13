@@ -29,13 +29,17 @@ stages:
     - script: |
         git config --global user.name "$(galletaHong_userName)"
         git config --global user.email "$(galletaHong_email)"
+        echo $(galletaHong_userName)
+        echo $(galletaHong_email)
       displayName: "Configure Git user"
     
     - pwsh: |
-        echo $(galletaHong_userName)
-        echo $(galletaHong_email)
         git config --global --add url."https://github.com/".insteadOf "git@github.com:"
         git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+
+        git remote set-url origin https://${gltHng_USER}:${gltHng_TOKEN}@github.com/${gltHng_USER}/first_pipline_repo.git
+        git fetch origin gh-pages --depth=1
+        
         echo "https://${gltHng_USER}:${gltHng_TOKEN}@github.com" >> ${HOME}/.git-credentials
         echo $(Agent.TempDirectory)
         
