@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 
 trigger:
-- none # every commit will trigger this yml
+- main # every commit will trigger this yml
 
 pool:
   vmImage: windows-latest
@@ -33,9 +33,8 @@ stages:
       env:
         gltHng_USER: $(galletaHong_userName)
         gltHng_TOKEN: $(repoToken)
-        HOME: $(Agent.TempDirectory)
-      
-
+        
+        # HOME: $(Agent.TempDirectory)
 
         # git config --global --add url."https://github.com/".insteadOf "git@github.com:"
         # git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"    
