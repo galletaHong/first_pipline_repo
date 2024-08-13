@@ -9,6 +9,7 @@ trigger:
 pool:
   vmImage: windows-latest
 
+
 stages:
 - stage: DeployMkDocs
   jobs:
@@ -30,12 +31,12 @@ stages:
         git config --global user.email "$(galletaHong_email)"
       displayName: "Configure Git user"
     
-    # echo "https://$gltHng_USER:$gltHng_TOKEN@github.com" >> $HOME/.git-credentials
     - pwsh: |
-        git config --global --add url."https://github.com/".insteadOf "git@github.com:"
         echo $(galletaHong_userName)
-        git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
         echo $(galletaHong_email)
+        git config --global --add url."https://github.com/".insteadOf "git@github.com:"
+        git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+        echo "https://${gltHng_USER}:${gltHng_TOKEN}@github.com" >> ${HOME}/.git-credentials
         echo $(Agent.TempDirectory)
         
         git config --global url."https://".insteadOf git://
@@ -47,10 +48,10 @@ stages:
         gltHng_TOKEN: $(repoToken)
         HOME: $(Agent.TempDirectory)
 
-    - pwsh: |
-        pip install -U mkdocs
-        pip install mkdocs-material
-      displayName: "Install mkDocs"
+    # - pwsh: |
+    #     pip install -U mkdocs
+    #     pip install mkdocs-material
+    #   displayName: "Install mkDocs"
       
     ########################################
     # - pwsh: |
