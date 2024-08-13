@@ -50,11 +50,11 @@ stages:
         gltHng_TOKEN: $(repoToken)
         HOME: $(Agent.TempDirectory)
 
-    - pwsh: |
-        git config --global url."https://".insteadOf git://
-        git config --global credential.helper store
-        git config --list
-      displayName: "git config"
+    # - pwsh: |
+    #     git config --global url."https://".insteadOf git://
+    #     git config --global credential.helper store
+    #     git config --list
+    #   displayName: "git config"
 
     - pwsh: |
         pip install -U mkdocs
