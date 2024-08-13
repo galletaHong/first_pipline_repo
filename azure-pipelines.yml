@@ -6,7 +6,9 @@
 trigger:
 - none # every commit will trigger this yml
 
-pool: First_test
+pool:
+  vmImage: windows-latest
+
 
 stages:
 - stage: DeployMkDocs
@@ -46,10 +48,10 @@ stages:
         gltHng_TOKEN: $(repoToken)
         HOME: $(Agent.TempDirectory)
 
-    # - pwsh: |
-    #     pip install -U mkdocs
-    #     pip install mkdocs-material
-    #   displayName: "Install mkDocs"
+    - pwsh: |
+        pip install -U mkdocs
+        pip install mkdocs-material
+      displayName: "Install mkDocs"
       
     ########################################
     # - pwsh: |
@@ -68,59 +70,3 @@ stages:
     - pwsh: |
         mkdocs build
         mkdocs gh-deploy
-    
-    # - task: PublishPipelineArtifact@1
-    #   inputs:
-    #     targetPath: '$(Agent.TempDirectory)/s/Skywalker/dist/skywalker_runner'
-    #     artifactName: skywalker_runner
-    #   displayName: Publish skywalker runner package
-      
-    #- pwsh: |
-    #    mkdocs build
-    #  displayName: "Build MkDocs"
-
-    #- pwsh: |
-    #    mkdocs gh-deploy --force
-    #  displayName: "Deploy mkDocs"
-
-        
-        
-
-
-###########################################
-# file: /steps/git/git-config-user-v0.yaml
-###########################################
-# parameters:
-#  username: codeway
-#  email: codeway@external.groups.hp.com
-# 
-# steps:
-# - script: |
-#     git config --global user.name "${{ parameters.username }}"
-#     git config --global user.email "${{ parameters.email }}"
-#   displayName: "Update git config user"
-#   env:
-#     HOME: $(Agent.TempDirectory)
-
-
-#####################################
-# file: /steps/git/git-config-v0.yaml
-#####################################
-# parameters:
-#  gheUser: ''
-#  gheToken: ''
-#  gheHostName: 'github.azc.ext.hp.com'
-#
-# steps:
-# - bash: |
-#     git config --global url."https://$GHE_HOSTNAME/".insteadOf "git@$GHE_HOSTNAME:"
-#     git config --global url."https://$GHE_HOSTNAME/".insteadOf "ssh://git@$GHE_HOSTNAME/"
-#     echo "https://$GHE_USER:$GHE_TOKEN@$GHE_HOSTNAME" >> $HOME/.git-credentials
-#     git config --global url."https://".insteadOf git://
-#     git config --global credential.helper store
-#   displayName: "Update git config settings"
-#   env:
-#     GHE_USER: ${{ parameters.gheUser }}
-#     GHE_TOKEN: ${{ parameters.gheToken }}
-#     GHE_HOSTNAME: ${{ parameters.gheHostName }}
-#     HOME: $(Agent.TempDirectory)
