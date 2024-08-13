@@ -44,9 +44,7 @@ stages:
         # git config --global --add url."https://github.com/".insteadOf "git@github.com:"
         # git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"    
         # -
-        # git config --global url."https://".insteadOf git://
-        # git config --global credential.helper store
-        # git config --list
+
     - pwsh: |
         git remote set-url origin "https://${gltHng_USER}:${gltHng_TOKEN}@github.com/${gltHng_USER}/first_pipline_repo.git"
         git fetch origin gh-pages --depth=1
@@ -56,6 +54,11 @@ stages:
         gltHng_TOKEN: $(repoToken)
         HOME: $(Agent.TempDirectory)
 
+    - pwsh: |
+        git config --global url."https://".insteadOf git://
+        git config --global credential.helper store
+        git config --list
+      displayName: "git config"
 
     - pwsh: |
         pip install -U mkdocs
