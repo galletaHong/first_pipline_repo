@@ -48,10 +48,10 @@ stages:
         gltHng_TOKEN: $(repoToken)
         HOME: $(Agent.TempDirectory)
 
-    # - pwsh: |
-    #     pip install -U mkdocs
-    #     pip install mkdocs-material
-    #   displayName: "Install mkDocs"
+    - pwsh: |
+        pip install -U mkdocs
+        pip install mkdocs-material
+      displayName: "Install mkDocs"
       
     ########################################
     # - pwsh: |
