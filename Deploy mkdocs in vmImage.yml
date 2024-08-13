@@ -7,7 +7,7 @@ trigger:
 - none # every commit will trigger this yml
 
 pool:
-  vmImage: windows-latest
+  vmImage: ubuntu-latest
 
 
 stages:
