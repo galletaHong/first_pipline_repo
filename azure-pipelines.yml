@@ -41,10 +41,6 @@ stages:
         git config --global credential.helper store
         git config --list
       displayName: "Update git config settings"
-      env:
-        gltHng_USER: $(galletaHong_userName)
-        gltHng_TOKEN: $(repoToken)
-        HOME: $(Agent.TempDirectory)
 
     # - pwsh: |
     #     pip install -U mkdocs
