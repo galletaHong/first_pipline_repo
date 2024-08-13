@@ -1,0 +1,71 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- none # every commit will trigger this yml
+
+pool:
+  vmImage: windows-latest
+
+stages:
+- stage: DeployMkDocs
+  jobs:
+  - job: deploy_gh_pages
+    displayName: Deploy MkDocs gh_pages
+
+    variables:
+      - group: galletaHong_creds
+
+    steps:
+    - checkout: self
+      lfs: true
+    - script: echo Deploy MkDocs gh_pages.
+      
+    # force mkdocs version 1.1.2
+    # reference: https://github.com/mkdocs/mkdocs/issues/2447
+    - script: |
+        git config --global user.name "$(galletaHong_userName)"
+        git config --global user.email "$(galletaHong_email)"
+      displayName: "Configure Git user"
+    
+    # echo "https://$gltHng_USER:$gltHng_TOKEN@github.com" >> $HOME/.git-credentials
+    - pwsh: |
+        git config --global --add url."https://github.com/".insteadOf "git@github.com:"
+        echo $(galletaHong_userName)
+        git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+        echo $(galletaHong_email)
+        echo $(Agent.TempDirectory)
+        
+        git config --global url."https://".insteadOf git://
+        git config --global credential.helper store
+        git config --list
+      displayName: "Update git config settings"
+      env:
+        gltHng_USER: $(galletaHong_userName)
+        gltHng_TOKEN: $(repoToken)
+        HOME: $(Agent.TempDirectory)
+
+    - pwsh: |
+        pip install -U mkdocs
+        pip install mkdocs-material
+      displayName: "Install mkDocs"
+      
+    ########################################
+    # - pwsh: |
+    #     pip install mike
+    #   displayName: "Install mike"
+
+    # - pwsh: |
+    #     git fetch origin gh-pages --depth=1
+    #   displayName: "fetch origin gh-pages"
+    
+    # - pwsh: |
+    #     mike deploy --push main
+    #   displayName: "Deploy via mike"
+    ########################################
+
+    - pwsh: |
+        mkdocs build
+        mkdocs gh-deploy
