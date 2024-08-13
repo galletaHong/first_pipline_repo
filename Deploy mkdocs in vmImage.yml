@@ -69,4 +69,8 @@ stages:
 
     - pwsh: |
         mkdocs build
+      displayName: mkdocs build
+    
+    - pwsh: |
         mkdocs gh-deploy
+        displayName: mkdocs deploy
