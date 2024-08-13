@@ -6,8 +6,7 @@
 trigger:
 - none # every commit will trigger this yml
 
-pool:
-  vmImage: windows-latest
+pool: First_test
 
 
 stages:
