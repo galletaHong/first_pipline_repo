@@ -30,16 +30,9 @@ stages:
         git config --global user.name "$(galletaHong_userName)"
         git config --global user.email "$(galletaHong_email)"
       displayName: "Configure Git user"
-      env:
-        gltHng_USER: $(galletaHong_userName)
-        gltHng_TOKEN: $(repoToken)
-        
-        # HOME: $(Agent.TempDirectory)
 
         # git config --global --add url."https://github.com/".insteadOf "git@github.com:"
         # git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"    
-        # -
-
     - pwsh: |
         git remote set-url origin https://$($env:gltHng_USER):$($env:gltHng_TOKEN)@github.com/$($env:gltHng_USER)/first_pipline_repo.git
         git fetch origin gh-pages --depth=1
