@@ -29,22 +29,22 @@ stages:
         git config --global user.email "$(galletaHong_email)"
       displayName: "Configure Git user"
     
-    # echo "https://$gltHng_USER:$gltHng_TOKEN@github.com" >> $HOME/.git-credentials
     - pwsh: |
-        git config --global --add url."https://github.com/".insteadOf "git@github.com:"
         echo $(galletaHong_userName)
-        git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
         echo $(galletaHong_email)
+        git config --global --add url."https://github.com/".insteadOf "git@github.com:"
+        git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+        echo "https://$gltHng_USER:$gltHng_TOKEN@github.com" >> $HOME/.git-credentials
         echo $(Agent.TempDirectory)
         
         git config --global url."https://".insteadOf git://
         git config --global credential.helper store
         git config --list
       displayName: "Update git config settings"
-      # env:
-      #   gltHng_USER: $(galletaHong_userName)
-      #   gltHng_TOKEN: $(repoToken)
-      #   HOME: $(Agent.TempDirectory)
+      env:
+        gltHng_USER: $(galletaHong_userName)
+        gltHng_TOKEN: $(repoToken)
+        HOME: $(Agent.TempDirectory)
 
     # - pwsh: |
     #     pip install -U mkdocs
