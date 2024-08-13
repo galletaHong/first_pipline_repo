@@ -46,7 +46,7 @@ stages:
         # -
 
     - pwsh: |
-        git remote set-url origin https://$(gltHng_USER):$(gltHng_TOKEN)@github.com/$(gltHng_USER)/first_pipline_repo.git
+        git remote set-url origin https://$($env:gltHng_USER):$($env:gltHng_TOKEN)@github.com/$($env:gltHng_USER)/first_pipline_repo.git
         git fetch origin gh-pages --depth=1
       displayName: "Update git config settings"
       env:
