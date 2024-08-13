@@ -32,11 +32,13 @@ stages:
         echo $(galletaHong_userName)
         echo $(galletaHong_email)
       displayName: "Configure Git user"
-    
-    - pwsh: |
-        git config --global --add url."https://github.com/".insteadOf "git@github.com:"
-        git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+      
 
+
+        # git config --global --add url."https://github.com/".insteadOf "git@github.com:"
+        # git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"    
+    - pwsh: |
+        echo "https://${gltHng_USER}:${gltHng_TOKEN}@github.com/${gltHng_USER}/first_pipline_repo.git"
         git remote set-url origin https://${gltHng_USER}:${gltHng_TOKEN}@github.com/${gltHng_USER}/first_pipline_repo.git
         git fetch origin gh-pages --depth=1
         
