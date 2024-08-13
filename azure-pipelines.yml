@@ -46,23 +46,28 @@ stages:
         gltHng_TOKEN: $(repoToken)
         HOME: $(Agent.TempDirectory)
 
-    - pwsh: |
-        pip install -U mkdocs
-        pip install mkdocs-material
-      displayName: "Install mkDocs"
+    # - pwsh: |
+    #     pip install -U mkdocs
+    #     pip install mkdocs-material
+    #   displayName: "Install mkDocs"
       
-    - pwsh: |
-        pip install mike
-      displayName: "Install mike"
-      
+    ########################################
+    # - pwsh: |
+    #     pip install mike
+    #   displayName: "Install mike"
+
+    # - pwsh: |
+    #     git fetch origin gh-pages --depth=1
+    #   displayName: "fetch origin gh-pages"
+    
+    # - pwsh: |
+    #     mike deploy --push main
+    #   displayName: "Deploy via mike"
+    ########################################
 
     - pwsh: |
-        git fetch origin gh-pages --depth=1
-      displayName: "fetch origin gh-pages"
-    
-    - pwsh: |
-        mike deploy --push main
-      displayName: "Deploy via mike"
+        mkdocs build
+        mkdocs gh-deploy
     
     # - task: PublishPipelineArtifact@1
     #   inputs:
