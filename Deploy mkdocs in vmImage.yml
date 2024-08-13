@@ -29,10 +29,15 @@ stages:
     - script: |
         git config --global user.name "$(galletaHong_userName)"
         git config --global user.email "$(galletaHong_email)"
+
         echo $(galletaHong_userName)
         echo $(galletaHong_email)
         echo "https://${gltHng_USER}:${gltHng_TOKEN}@github.com/${gltHng_USER}/first_pipline_repo.git"
       displayName: "Configure Git user"
+      env:
+        gltHng_USER: $(galletaHong_userName)
+        gltHng_TOKEN: $(repoToken)
+        HOME: $(Agent.TempDirectory)
       
 
 
