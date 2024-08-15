@@ -4,7 +4,12 @@
 # https://aka.ms/yaml
 
 trigger:
-- main # every commit will trigger this yml
+#- main # every commit will trigger this yml
+  paths: 
+    include: 
+    - "docs/*"
+    - "mkdocs.yml"
+
 
 pool:
   vmImage: windows-latest
