@@ -10,6 +10,8 @@ trigger:
     - "docs/*"
     - "mkdocs.yml"
 
+pr: none
+
 pool:
   vmImage: windows-latest
 
