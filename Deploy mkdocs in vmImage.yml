@@ -9,11 +9,6 @@ trigger:
     include: 
     - "docs/*"
     - "mkdocs.yml"
-pr:
-  paths:
-    include:
-      - "docs/*"
-      - "mkdocs.yml"
 
 pool:
   vmImage: windows-latest
