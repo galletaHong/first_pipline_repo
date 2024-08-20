@@ -26,5 +26,3 @@ int main(){
 > quote example 1
 
 > quote example 2
-
-> quote example 3
