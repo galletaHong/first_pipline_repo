@@ -4,7 +4,11 @@
 ```
 $ pip install mkdocs
 ```
-After installation, you can [getting Started with MkDocs](https://www.mkdocs.org/getting-started/) :
+After installation, check the version you installed :
+```
+$ mkdocs --version
+```
+Next you can [getting Started with MkDocs](https://www.mkdocs.org/getting-started/) :
 ```
 $ mkdocs new my-project
 $ cd my-project
@@ -98,3 +102,6 @@ theme:
     - content.code.copy
     - content.code.annotate 
 ```
+## Other [Design implementation](https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/)
+Also you can use Material to design some style.<br>
+like some colors, fonts, logo and so on.
